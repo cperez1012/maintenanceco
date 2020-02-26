@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'application#home'
+  #session routes
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
-  get '/register', to: 'users#new' 
+  #users routes
+  get '/signup', to: 'users#new'
+  get '/users/:id', to: 'users#show', as: 'user'
+  # resources :users, only: [:new, :show, :index, :edit]
   
-  resources :users, only:[:index, :new, :show]
-
+  root 'static#home'
 end

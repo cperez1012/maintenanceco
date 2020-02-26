@@ -2,13 +2,6 @@ module ApplicationHelper
     module SessionsHelper
   
       def logged_in?
-        # if current_user
-        #   true
-        # else
-        #   false
-        # end
-  
-        # current_user ? true : false
         !!current_user      
       end
   

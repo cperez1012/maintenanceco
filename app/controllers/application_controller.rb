@@ -1,20 +1,16 @@
 class ApplicationController < ActionController::Base
-  # Ruby Architecture - Can I mix in privately...
-  include ApplicationHelper::SessionsHelper
-  
-  before_action :current_user
-  
-  # Action / End point to HTTP Request
-  def index 
-    
-  end
+   
 
-  private
-    def authentication_required
-      if !logged_in?
-        redirect_to "/login"
-      end
+    helper_method :current_user, :logged_in?, :set_rental_properties
+
+    private
+
+    def current_user
+        @current_user ||= User.find_by(id: session[:user_id])
     end
 
-
+    def logged_in?
+        !!current_user
+    end
+    
 end
