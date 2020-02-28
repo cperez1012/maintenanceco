@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
-      byebug
+      # byebug
       flash.notice = "Successfully Signed in!"
 
       redirect_to user_path(@user)

@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
             #actually logs the user in
             session[:user_id] = @user.id
             # then render user profile 
-            flash.notice = "Signed in sucessfully as #{@user.name}"
+            flash.notice = "Signed in sucessfully as #{@user.username}"
             redirect_to user_path(@user)
         else # if not authenticated
             flash.alert = "Invalid Email or Password.  Please try again."
