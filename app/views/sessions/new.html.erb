@@ -1,8 +1,8 @@
 <center><h1> Sign In </h1>
      
-<h6> Need an account?   <%= link_to "Sign Up", new_user_path%></h6><br>
+<h6> Need an account?   <%= link_to "Sign Up", signup_path%></h6><br>
       
-    <%= form_for(:session, url: sessions_path(@user)) do |f| %>
+    <%= form_for(:session, url: login_path(@user)) do |f| %>
 
         <div class="form_fields">
             <%= f.label :email %>

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     
     def new 
         if logged_in?
-            redirect_to user_path(current_user)
+            redirect_to profile_path(current_user)
         end
     end
 
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             # then render user profile 
             flash.notice = "Signed in sucessfully as #{@user.username}"
-            redirect_to user_path(@user)
+            redirect_to profile_path(@user)
         else # if not authenticated
             flash.alert = "Invalid Email or Password.  Please try again."
             #redirect back to login form
@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
 
     def destroy
         session[:user_id] = nil
-        redirect_to new_session_path
+        redirect_to login_path
     end
 end
