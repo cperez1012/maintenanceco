@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
    
 
-    helper_method :current_user, :logged_in?, :set_rental_properties
+    helper_method :current_user, :logged_in?
 
     private
 

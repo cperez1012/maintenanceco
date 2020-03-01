@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_220145) do
+ActiveRecord::Schema.define(version: 2020_03_01_022519) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "task_name"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_02_13_220145) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "google_token"
+    t.string "google_refresh_token"
   end
 
 end

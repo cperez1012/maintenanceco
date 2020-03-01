@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :tasks
   
   resources :tenants
+
+  get '/auth/:provider/callback', to: 'users#create_google'
+  get 'auth/failure', to: redirect('/')
   
   root 'static#home'
 end

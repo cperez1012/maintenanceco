@@ -3,11 +3,12 @@ class TenantsController < ApplicationController
     before_action :current_user, :logged_in?, set_tenants
 
     def index
-        if logged_in?
-        set_tenants
+        @tenants = Tenant.all
+        # set_tenants
+
         # if @tenants.empty?
         #     flash.alert = "No Tenants Found"
-        end
+        # end
     end
 
     def new
@@ -18,6 +19,7 @@ class TenantsController < ApplicationController
         @tenant = Tenant.new(tenant_params)
         if @tenant.valid?
             @tenant.save
+            session[:user_id] = @tenant.id
             redirect_to tenant_path(@tenant)
         else
             render :new

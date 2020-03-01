@@ -15,17 +15,15 @@
       </thead>
 
       <tbody>
+        <tr>
         <% @tenants.each do |tenant| %>
-          <tr>
             <td><%= tenant.id %></td>
             <td><%= link_to tenant.renter, tenant_path(tenant)%></td>
             <td><%= tenant.renter_cell_phone %> </td>
             <td><%= tenant.renter_email%></td>
-            # <td><%= link_to 'Show', employee %></td>
-            # <td><%= link_to 'Edit', edit_tenant_path(@tenant) %></td>
-            # <td><%= link_to 'Delete', tenant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+        
         <% end %>
+        </tr>
       </tbody>
     </table>
     <br>
