@@ -1,29 +1,15 @@
 <h1> Add tasks</h1>
-<%= form_for(@task) do |f| %>
-  <%= f.label(:task_name) %>
-  <%= f.text_field(:task_name) %>
-  <br>
-  <%= f.label(:task_needed) %>
-  <%= f.text_field(:task_needed) %>
-  <br>
-  <%= f.label(:task_description) %>
-  <%= f.text_field(:task_description) %>
-  <br>
-  <%= f.label(:task_cost) %>
-  <%= f.text_field(:task_cost) %>
-  <br>  
-  <%= f.label(:task_completed) %>
-  <%= f.text_field(:task_completed) %>
-  <br>
-#   <%= f.label("Add to list :") %>
-#   <%= f.select :list_id, List.all.collect { |l| [l.name, l.id]} %>
-#   <br>
-#   <br>
-#   <%= f.label("Assign to user :") %>
-#   <% User.all.each do |u| %>
-#     <br>
-#     <input type="checkbox" name="task[user_ids][]" value="<%= u.id %>" /> <%= u.name %>
-#   <% end %>
-  <br>
-  <%= f.submit %>
-<% end %>
+
+<div class="ui container">
+</p>
+
+<div class="ui top attached tabular menu">
+  <a class="active item" data-tab="info">
+    New Task
+  </a>
+</div>
+<div class="ui bottom tab attached segment active" data-tab="info">
+  <%= render 'form'%>
+</div>
+
+</div>

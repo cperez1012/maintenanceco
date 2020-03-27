@@ -1,0 +1,52 @@
+<div class="text-center">
+  <h3 style="color: rgb(255,110,110)">Task Added : <%= @task.name%></h3>
+
+#     <form method="post" action="/tasks/<%=@task.id%>/delete">
+#       <input id="hidden" type="hidden" name="_method" value="DELETE">
+#       <button type="submit" class="btn btn-danger">Delete Task</button>
+#       <button type="button" class="btn btn-info">
+#       <a href="/tasks/<%=@task.id%>/edit"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+#       </button>
+#     </form>
+# </div>
+
+<div class="ui container">
+</p>
+<div class="ui top attached tabular menu">
+  <a class="active item" data-tab="info">
+    Task <%= @task.id %>
+  </a>
+  <a class="item" data-tab="remote">
+    Remote info
+  </a>
+  <a class="item" data-tab="comments">
+    Comments
+  </a>
+  <a class="item" data-tab="attachments">
+    Attachments
+  </a>
+</div>
+
+<div class="ui bottom tab attached segment active" data-tab="info">
+  <%= render 'form'%>
+  <%= render 'tags'%>
+  <%= render 'assigneds'%>
+</div>
+<div class="ui bottom tab attached segment" data-tab="remote">
+  <%= render 'remote'%>
+</div>
+<div class="ui bottom tab attached segment" data-tab="comments">
+  <%= render 'comments'%>
+</div>
+<div class="ui bottom tab attached segment" data-tab="attachments">
+  <%= render 'attachments'%>
+</div>
+
+
+
+
+<script>
+$('.menu .item')
+  .tab()
+;
+</script>

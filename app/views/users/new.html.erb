@@ -1,8 +1,9 @@
 <div class="form_fields">
-<center><h1> Register to MaintenanceCo </h1>
-<h6> Already have an account? &nbsp  <%= link_to "Sign In", login_path%></h6><br>
+    <center><h1> Register to MaintenanceCo </h1>
+    <h6> Already have an account? &nbsp  <%= link_to "Sign In", login_path%></h6><br>
+
       
-        <%= form_for(:session, url: signup_path(@user)) do |f| %>
+        <%= form_for(@user, url: signup_path) do |f| %>
             
             <%= f.label :username %>
             <%= f.text_field :username %><br><br>
@@ -19,7 +20,8 @@
             <%= f.submit "Create Account" %><br><br>
 
         <% end %>
-        <p> or </p>
-        <h6> <%= link_to("Sign Up with Gmail", '/auth/google_oauth2') %></h6><br></center>
+    <p> or </p>
+    <h6> <%= link_to("Sign Up with Gmail", user_google_oauth2_omniauth_authorize_path) %></h6><br></center>
+
 </div>
 

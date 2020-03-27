@@ -3,9 +3,15 @@ class CreateUsers < ActiveRecord::Migration[6.0]
     create_table :users do |t|
       t.string :username
       t.string :email
+      t.string :provider
+      t.string :uid
+      t.string :token
+      t.integer :expires_at
+      t.boolean :expires
+      t.string :refresh_token
       t.string :password_digest
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

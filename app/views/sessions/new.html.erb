@@ -1,25 +1,25 @@
 <center><h1> Sign In </h1>
      
-<h6> Need an account?   <%= link_to "Sign Up", signup_path%></h6><br>
+    <h6> Need an account?   <%= link_to "Sign Up", signup_path%></h6><br>
       
-    <%= form_for(:session, url: login_path(@user)) do |f| %>
+        <%= form_for(:session, url: sessions_path(@user)) do |f| %>
 
-        <div class="form_fields">
-            <%= f.label :email %>
-            <%= f.email_field :email %> 
-        </div>
+            <div class="form_fields">
+                <%= f.label :email %>
+                <%= f.email_field :email %> 
+            </div>
 
-        <div class="form_fields">
-            <%= f.label :password %>
-            <%= f.password_field :password %><br>
-        </div>
+            <div class="form_fields">
+                <%= f.label :password %>
+                <%= f.password_field :password %><br>
+            </div>
 
 
         <%= f.submit "Login" %><br><br>
 
-    <% end %>
+        <% end %>
     <p>or</p>
-    <h6> <%= link_to("Sign In with Gmail", '/auth/google_oauth2') %></h6><br>
+    <h6> <%= link_to("Sign In with Gmail",   user_google_oauth2_omniauth_authorize_path) %></h6><br>
     
     </center>
     <br><br>

@@ -10,39 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_01_022519) do
+ActiveRecord::Schema.define(version: 2020_03_26_162822) do
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "task_name"
-    t.boolean "task_needed", default: true
-    t.text "task_description"
-    t.decimal "task_cost"
-    t.boolean "task_completed", default: false
-    t.integer "tenant_id"
+  create_table "sessions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "tenants", force: :cascade do |t|
-    t.string "renter"
-    t.string "co_renter"
-    t.string "address"
-    t.string "renter_email"
-    t.string "co_renter_email"
-    t.string "renter_cell_phone"
-    t.string "co_renter_cell_phone"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.string "summary"
+    t.text "description"
+    t.string "priority"
+    t.integer "project"
+    t.string "status"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
+    t.string "provider"
+    t.string "uid"
+    t.string "token"
+    t.integer "expires_at"
+    t.boolean "expires"
+    t.string "refresh_token"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "google_token"
-    t.string "google_refresh_token"
   end
 
 end

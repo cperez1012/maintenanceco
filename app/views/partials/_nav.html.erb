@@ -8,25 +8,16 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto"> 
     
-      
-     
       <li class="nav-item active">
-        <%= link_to "Logout" , logout_path(session[:user_id]), method: :delete, class: "nav-link"%>
+        <%= link_to "Logout" , logout_url, method: :delete, class: "nav-link"%>
       </li>
       <li class="nav-item active">
-        <%= link_to "Home", profile_path(current_user), class: "nav-link"%> 
+        <%= link_to "#{@current_user.username}'s Profile", profile_url(@current_user), class: "nav-link"%> 
       </li> 
        <li class="nav-item active">
-        <%= link_to "Tasks", tasks_path, class: "nav-link"%>
+        <%= link_to "#{@current_user.username}'s Tasks", tasks_url(@current_user), class: "nav-link"%>
       </li>
-       <li class="nav-item active">
-        <%= link_to "Tenants",tenants_path, class: "nav-link"%>
-      </li>
-      
+ 
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>

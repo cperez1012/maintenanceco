@@ -24,6 +24,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+gem 'devise'
+gem 'activerecord-session_store'
+gem 'bootstrap', '~> 4.1.1'
+gem "font-awesome-rails"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

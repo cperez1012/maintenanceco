@@ -1,0 +1,79 @@
+<h2 class="text-center" style="color: rgb(255,110,110)"> Edit Task </h2>
+<div class="ui container">
+<br>
+<div class="ui top attached tabular menu">
+  <a class="active item" data-tab="info">
+    <%= @task.id %>
+  </a>
+  <a class="item" data-tab="remote">
+    Remote info
+  </a>
+    <a class="item" data-tab="comments">
+    Comments
+  </a>
+  </a>
+    <a class="item" data-tab="attachments">
+    Attachments
+  </a>
+
+</div>
+
+<div class="ui bottom tab attached segment active" data-tab="info">
+   <%= form_for(@task, :html => {:class => 'ui form'}) do |f| %>
+                <div class="fields">
+                    <div class=" field">
+                        <%= f.submit "Save", class: "ui green button "%>
+                    </div>
+                    <div class="two wide field">
+                        <%= f.select :status, Task.status.collect, {}, {class: "ui fluid dropdown"} %>
+                    </div>
+                    <div class="two wide field">
+                        <%= f.select :priority, Task.priority.collect, {}, {class: "ui fluid dropdown"} %>
+                    </div>
+                    <div class="two wide field">
+                        <%= f.select :project, Project.all.collect {|p| [p.name, p.id] }, {}, {class: "ui fluid dropdown"}  %>
+                    </div>
+                    <div class="nine wide  field">
+                      <%= f.text_field :summary %>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <%= f.text_area :description %>
+                </div>
+                <div class="fields">
+                    <div class="four wide field">
+                        <label>Developer:</label>
+                        <%= f.select :dev, User.where(role: 'Developer').collect{|u| [u.email[0,4], u.id]}, {}, {class: "ui fluid dropdown"} %>
+                    </div>
+                    <div class="four wide field">
+                        <label>DEV_EST:</label>
+                        <%= f.number_field :dev_est %>
+                    </div>
+                    <div class="four wide field">
+                        <label>Tester:</label>
+                        <%= f.select :dev, User.where(role: 'Tester').collect{|u| [u.email[0,4], u.id]}, {}, {class: "ui fluid dropdown"} %>
+                    </div>
+                    <div class="four wide field">
+                        <label>TST_EST:</label>
+                        <%= f.number_field :tst_est %>
+                    </div>
+                </div>
+        <% end %>
+</div>
+<div class="ui bottom tab attached segment" data-tab="remote">
+<%= render 'remote'%>
+</div>
+<div class="ui bottom tab attached segment" data-tab="comments">
+<%= render 'comments'%>
+</div>
+<div class="ui bottom tab attached segment" data-tab="attachments">
+attachments
+</div>
+
+<script>
+$('.menu .item')
+  .tab()
+;
+</script>
+  
