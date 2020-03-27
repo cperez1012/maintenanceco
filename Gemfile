@@ -26,7 +26,7 @@ gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'activerecord-session_store'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem "font-awesome-rails"
 
 # Use Active Storage variant
