@@ -1,22 +1,23 @@
-<%= form_for(@task, :html => {:class => 'ui form'}) do |f| %>
-    <div class="fields">
-        <div class=" field">
-            <%= f.submit "Save", class: "ui green button "%>
-        </div>
-        <div class="two wide field">
-            <%= f.select :status, Task.status.collect, {}, {class: "ui fluid dropdown"} %>
-        </div>
-        <div class="two wide field">
-            <%= f.select :priority, Task.priority.collect, {}, {class: "ui fluid dropdown"} %>
-        </div>
-        <div class="two wide field">
-            <%= f.select :project, Project.all.collect {|p| [p.name, p.id] }, {}, {class: "ui fluid dropdown"}  %>
-        </div>
-        <div class="nine wide  field">
-          <%= f.text_field :summary, placeholder: "Task summary"%>
-        </div>
-    </div>
-    <div class="field">
-        <%= f.text_area :description, placeholder: "Task description" %>
-    </div>
+<%= form_for :task, url: task_path(@task) method: :post do |f| %><center>
+    <%= f.label :project%><br>
+    <%= f.text_field :project%><br>
+
+    <br><%= f.label :priority%><br>
+    <%= f.select :priority, [['Low', 1], ['Medium', 2], ['High', 3]]%><br>
+
+    <br><%= f.label :status%><br>
+    <%= f.select :status, [['Pending', 1], ['Completed', 2]]%><br>
+
+    <br><%= f.label :name%><br>
+    <%= f.text_field :name%><br>
+
+    <br><%= f.label :summary%><br>
+    <%= f.text_field :summary%><br>
+    
+    <br><%= f.label :description%><br>
+    <%= f.text_area :description%><br>
+
+    <br><%= f.submit %></center>
 <% end %>
+
+<%= link_to 'Back', tasks_path %>

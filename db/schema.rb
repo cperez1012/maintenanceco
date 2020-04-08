@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_162822) do
-
-  create_table "sessions", force: :cascade do |t|
-    t.string "session_id", null: false
-    t.text "data"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
-    t.index ["updated_at"], name: "index_sessions_on_updated_at"
-  end
+ActiveRecord::Schema.define(version: 2020_02_13_214423) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
@@ -27,19 +18,22 @@ ActiveRecord::Schema.define(version: 2020_03_26_162822) do
     t.string "summary"
     t.text "description"
     t.string "priority"
+    t.integer "created_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "project"
     t.string "status"
+    t.text "comment"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "provider"
-    t.string "uid"
-    t.string "token"
     t.integer "expires_at"
     t.boolean "expires"
-    t.string "refresh_token"
+    t.string "google_token"
+    t.string "google_refresh_token"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

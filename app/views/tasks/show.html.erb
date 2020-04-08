@@ -1,52 +1,20 @@
-<div class="text-center">
-  <h3 style="color: rgb(255,110,110)">Task Added : <%= @task.name%></h3>
+<h1>Task</h1>
 
-#     <form method="post" action="/tasks/<%=@task.id%>/delete">
-#       <input id="hidden" type="hidden" name="_method" value="DELETE">
-#       <button type="submit" class="btn btn-danger">Delete Task</button>
-#       <button type="button" class="btn btn-info">
-#       <a href="/tasks/<%=@task.id%>/edit"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-#       </button>
-#     </form>
-# </div>
-
-<div class="ui container">
+<p>
+  <strong>Project:</strong>
+  <%= @task.project %>
 </p>
-<div class="ui top attached tabular menu">
-  <a class="active item" data-tab="info">
-    Task <%= @task.id %>
-  </a>
-  <a class="item" data-tab="remote">
-    Remote info
-  </a>
-  <a class="item" data-tab="comments">
-    Comments
-  </a>
-  <a class="item" data-tab="attachments">
-    Attachments
-  </a>
-</div>
+ 
+<p>
+  <strong>Name:</strong>
+  <%= @task.name %>
+</p>
 
-<div class="ui bottom tab attached segment active" data-tab="info">
-  <%= render 'form'%>
-  <%= render 'tags'%>
-  <%= render 'assigneds'%>
-</div>
-<div class="ui bottom tab attached segment" data-tab="remote">
-  <%= render 'remote'%>
-</div>
-<div class="ui bottom tab attached segment" data-tab="comments">
-  <%= render 'comments'%>
-</div>
-<div class="ui bottom tab attached segment" data-tab="attachments">
-  <%= render 'attachments'%>
-</div>
+<p>
+  <strong>Status:</strong>
+  <%= @task.status %>
+</p>
+ 
+<%= link_to 'Back', tasks_path %>
 
-
-
-
-<script>
-$('.menu .item')
-  .tab()
-;
-</script>
+<%= button_to "Edit task", edit_task_path(@task), method: :get %>

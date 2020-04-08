@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">  </a>
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,10 +12,10 @@
         <%= link_to "Logout" , logout_url, method: :delete, class: "nav-link"%>
       </li>
       <li class="nav-item active">
-        <%= link_to "#{@current_user.username}'s Profile", profile_url(@current_user), class: "nav-link"%> 
+        <%= link_to "#{current_user.username}'s Profile", profile_url(current_user), class: "nav-link"%> 
       </li> 
        <li class="nav-item active">
-        <%= link_to "#{@current_user.username}'s Tasks", tasks_url(@current_user), class: "nav-link"%>
+        <%= link_to "#{current_user.username}'s Tasks", tasks_url(current_user), class: "nav-link"%>
       </li>
  
     </ul>
