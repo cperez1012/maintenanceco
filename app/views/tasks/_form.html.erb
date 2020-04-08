@@ -1,4 +1,4 @@
-<%= form_for :task, url: task_path(@task) method: :post do |f| %><center>
+<%= form_for(Task.new) do |f| %><center>
     <%= f.label :project%><br>
     <%= f.text_field :project%><br>
 

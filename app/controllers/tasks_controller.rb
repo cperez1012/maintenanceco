@@ -11,6 +11,7 @@ class TasksController < ApplicationController
     def new
         if logged_in?
             @task = Task.new
+            # binding.pry 
         else
             redirect_to login_path
         end
@@ -19,9 +20,10 @@ class TasksController < ApplicationController
     def create
         @task = Task.new(task_params)
         if @task.save
-        # binding.pry
-            redirect_to tasks_path(@task)
+        
+            redirect_to task_path(@task)
         else
+            binding.pry
             redirect_to new_task_path
         end
     end
