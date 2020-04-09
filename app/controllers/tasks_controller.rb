@@ -19,13 +19,14 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(task_params)
-        if @task.save
+     
+        @task.save
         
-            redirect_to task_path(@task)
-        else
-            # binding.pry
-            redirect_to new_task_path
-        end
+            redirect_to task_path(task_params)
+        # else
+        #     # binding.pry
+        #     redirect_to new_task_path
+        # end
     end
 
     def edit
