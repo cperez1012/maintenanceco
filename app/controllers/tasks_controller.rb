@@ -23,7 +23,7 @@ class TasksController < ApplicationController
         
             redirect_to task_path(@task)
         else
-            binding.pry
+            # binding.pry
             redirect_to new_task_path
         end
     end
