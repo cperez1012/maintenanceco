@@ -1,35 +1,31 @@
 <h1>Editing task</h1>
 
-<%= form_for :task, url: task_path(@task), method: :patch do |f| %>
-  <% if @task.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@task.errors.count, "error") %> prohibited
-      this task from being saved:</h2>
-    <ul>
-    <% @task.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <p>
-    <%= f.label :project %><br>
-    <%= f.text_field :project %>
-  </p>
- 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_area :name %>
-  </p>
+<h4><%=current_user.username %> Edit Task</h4>
+<div class="Edit Task Form">
+<%= form_for :task, url: task_path(:id), method: :patch do |f| %>
 
-  <p>
-    <%= f.label :status %><br>
-    <%= f.text_area :status %>
-  </p>
+  <%= f.label :project%><br>
+  <%= f.text_field :project%><br>
  
+  <br><%= f.label :priority%><br>
+  <%= f.select :priority, [['Low'], ['Medium'], ['High']]%><br>
+
+  <br><%= f.label :status%><br>
+  <%= f.select :status, [['Pending'], ['Completed']]%><br>
+
+  <br><%= f.label :name%><br>
+  <%= f.text_field :name%><br>
+
+  <br><%= f.label :summary%><br>
+  <%= f.text_field :summary%><br>
+  
+  <br><%= f.label :description%><br>
+  <%= f.text_area :description%><br>
   <p>
     <%= f.submit %>
   </p>
 <% end %>
- 
+</div></center>
+
+<%= link_to 'Show', @task %> |
 <%= link_to 'Back', tasks_path %>

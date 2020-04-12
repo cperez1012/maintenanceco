@@ -2,7 +2,11 @@ class SessionsController < ApplicationController
     helper_method :logged_in?, :current_user
 
     def new
-      @user = User.new 
+      if logged_in?
+        redirect_to profile_path(current_user)
+      else
+        @user = User.new
+      end
     end
 
     def create
@@ -29,27 +33,49 @@ class SessionsController < ApplicationController
       end
     end
 
+    # def google_auth
+    #   # Get access tokens from the google server
+    #   access_token = request.env["omniauth.auth"]
+    #   binding.pry
+    #   @user = User.find_or_create_from_omniauth_hash(auth)
+    #   # binding.pry
+    #   @user.update_attributes(:google_token => access_token.credentials.token)
+    #   # binding.pry
+    #   # Access_token is used to authenticate request made from the rails application to the google server
+    #   # Refresh_token to request new access_token
+    #   # Note: Refresh_token is only sent once during the first request
+      
+    #   refresh_token = access_token.credentials.refresh_token
+      
+    #   @user.update_attributes(google_refresh_token: :refresh_token) if refresh_token.present?
+      
+    #   session[:user_id] = @user.id
+      
+    #   redirect_to profile_path(@user), notice: 'Successfully connected to Google!'
+    # end
+
     def google_auth
-      # Get access tokens from the google server
-      access_token = request.env["omniauth.auth"]
       # binding.pry
-      @user = User.find_or_create_by(current_user)
+      # Get access tokens from the google server
+      # access_token = request.env["omniauth.auth"]
+      # binding.pry
+      @user = User.find_or_create_from_omniauth_hash(auth)
   
-      @user.update_attributes(:google_token => access_token.credentials.token)
+      # @user.update_attributes(:google_token => access_token.credentials.token)
   
       # Access_token is used to authenticate request made from the rails application to the google server
       # Refresh_token to request new access_token
       # Note: Refresh_token is only sent once during the first request
   
-      refresh_token = access_token.credentials.refresh_token
+      # refresh_token = access_token.credentials.refresh_token
   
-      @user.update_attributes(google_refresh_token: :refresh_token) if refresh_token.present?
+      # @user.update_attributes(google_refresh_token: :refresh_token) if refresh_token.present?
   
-      session[:user_id] = @user.id.to_s
-      redirect_to profile_path(@user), notice: 'Successfully connected to Google!'
+      session[:user_id] = @user.id
+      redirect_to profile_path, notice: 'Successfully connected to Google!'
     end
   
-    #private
+    private
   
     def auth
       request.env['omniauth.auth']

@@ -1,8 +1,11 @@
 class TasksController < ApplicationController
 
+    before_action :current_user, :logged_in?
+    before_action :set_task, only: [:show, :edit, :update, :destroy]
+
     def index
         if logged_in?
-            @tasks = Task.all
+            @tasks = current_user.tasks
         else
             redirect_to login_path
         end
@@ -18,19 +21,20 @@ class TasksController < ApplicationController
     end
 
     def create
-        @task = Task.new(task_params)
-        binding.pry
-        @task.save
         
+        @task = current_user.tasks.build(task_params)
+        # raise @task.inspect
+        if @task.save
+        # binding.pry 
         redirect_to task_path(@task)
-        # else
-        #     # binding.pry
-        #     redirect_to new_task_path
-        # end
+        else
+            # binding.pry
+            redirect_to new_task_path
+        end
     end
 
-    def edit
-        @task = Task.find_by(params[:id])
+    def edit        
+        @task = Task.find(params[:id])
     end
 
     def show
@@ -44,17 +48,23 @@ class TasksController < ApplicationController
     end
 
     def destroy
+        
+        @task = Task.find_by(id: params[:id])
         if @task.destroy
             flash[:notice] = "Task was deleted"
-            redirect_to tasks_path
         else
           flash[:alert] = "Task not deleted. Please try again"
         end
+        redirect_to tasks_path
     end
   
     private
 
+    def set_task
+        @task = Task.find_by(id: params[:id])
+    end
+
     def task_params
-        params.require(:task).permit(:summary, :description, :priority, :created_by, :project, :status, :comment)
+        params.require(:task).permit(:name, :summary, :description, :priority, :created_by, :project, :status, :comment)
     end
 end 
