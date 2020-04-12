@@ -2,6 +2,8 @@ class User < ApplicationRecord
     
     has_secure_password
     has_many :tasks
+    has_many :lists, through: :tasks
+     
     validates :username, length: { minimum: 2 }
     validates :email, presence: true
     validates :email, uniqueness: true
