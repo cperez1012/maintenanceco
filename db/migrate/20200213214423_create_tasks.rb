@@ -11,7 +11,6 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.datetime :updated_at, null: false
       t.integer :project
       t.string :status
-      t.text :comment
     end
   end
 end

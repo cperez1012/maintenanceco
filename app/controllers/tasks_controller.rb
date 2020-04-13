@@ -13,24 +13,24 @@ class TasksController < ApplicationController
 
     def new
         if logged_in?
-            @task = Task.new
-            # binding.pry 
+            @task = Task.new 
         else
             redirect_to login_path
         end
     end
 
     def create
-        
+        # binding.pry
         @task = current_user.tasks.build(task_params)
         # raise @task.inspect
-        if @task.save
+        @task.save
+        # if @task.save
         # binding.pry 
         redirect_to task_path(@task)
-        else
-            # binding.pry
-            redirect_to new_task_path
-        end
+        # else
+        #     # binding.pry
+        #     redirect_to new_task_path
+        # end
     end
 
     def edit        
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
     end
 
     def update
-        @task = Task.find(params[:id])
+        @task = Task.find_by(task_params)
         @task.update(task_params)
         redirect_to task_path(@task)
     end
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
     def destroy
         
         @task = Task.find_by(id: params[:id])
-        if @task.destroy
+        if @task.destroy || @task.lists.destroy
             flash[:notice] = "Task was deleted"
         else
           flash[:alert] = "Task not deleted. Please try again"
@@ -65,6 +65,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-        params.require(:task).permit(:name, :summary, :description, :priority, :created_by, :project, :status, :comment)
+        params.require(:task).permit(:name, :summary, :description, :priority, :created_by, :project, :status)
     end
 end 

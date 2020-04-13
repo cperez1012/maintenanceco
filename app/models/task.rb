@@ -1,8 +1,9 @@
 class Task < ApplicationRecord
 
     belongs_to :user
-    belongs_to :list
+    has_and_belongs_to_many :list
+    # belongs_to :list
     
-    validates :user_id, :presence => true
+    # validates :user_id, :presence => true
 
 end

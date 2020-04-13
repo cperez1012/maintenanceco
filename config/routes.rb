@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :tasks, only: :index do
-    resources :lists
+  resources :tasks do
+    resources :lists, only: [:index]
   end
-
+  
   root to: 'sessions#new'
 
 end
