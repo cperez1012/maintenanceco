@@ -1,0 +1,12 @@
+<%= form_for @list do |f| %>
+  <%= f.text_field :name, placeholder: "Name", class: "form-control"%>
+
+  <%= f.fields_for :task_attributes do |task| %>
+
+  <%= task.text_field :name, placeholder:"Add a Task", class: "form-control" %>
+  <p><span class="task-list-text complete-text">Complete?   </span><%= task.check_box :complete %></p>
+  
+  <% end %>
+
+  <%= f.submit class: "form-control btn-main sign-up" %>
+<% end %>

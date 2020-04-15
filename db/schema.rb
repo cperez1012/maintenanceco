@@ -13,16 +13,15 @@
 ActiveRecord::Schema.define(version: 2020_04_12_210139) do
 
   create_table "lists", force: :cascade do |t|
-    t.string "status"
-    t.text "comment"
-    t.integer "task_id"
+    t.string "name"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.integer "list_id"
     t.string "summary"
     t.text "description"
     t.string "priority"
@@ -30,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_210139) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "project"
-    t.string "status"
+    t.boolean "status", default: false
   end
 
   create_table "users", force: :cascade do |t|

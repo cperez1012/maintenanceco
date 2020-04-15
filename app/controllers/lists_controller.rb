@@ -3,14 +3,54 @@ class ListsController < ApplicationController
     # before_action :set_list
 
     def index
-        @lists = List.all
-        @list = @tasks
+        if logged_in?
+            @lists = current_user.lists.all
+        else
+            redirect_to login_path
+        end
     end
 
-    # private
+    def show
+        @list = current_user.lists.find(params[:id])
+    end
+    
+    def new 
+        if logged_in?
+            @list = current_user.lists.build
+        else
+            redirect_to login_path
+        end
+    end
+    
+    def create
+        @list = current_user.lists.build(list_params)
+        if @list.save
+            redirect_to lists_path(@list)
+        else
+          render :new
+        end
+    end
 
-    # def set_list
-    #     @list = @task.lists.find(params[:task_id])
-    # end
+    def edit
+        @list = current_user.lists.find(params[:id])
+    end
 
-end 
+    def update
+        @list = List.find(params[:id])
+        @list.update(list_params)
+        redirect_to lists_path(@list)
+    end
+
+    def destroy
+        @list = List.find(params[:id])
+        @list.destroy
+        redirect_to lists_path
+    end
+    
+    private
+    
+    def list_params
+        params.require(:list).permit(:name, tasks_attributes: [:name, :summary, :description, :priority, :created_by, :project, :status])
+    end
+
+end

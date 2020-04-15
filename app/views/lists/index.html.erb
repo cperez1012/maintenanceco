@@ -1,69 +1,32 @@
-<h1>Welcome to MaintenanceCo, <%=current_user.username %>!</h1><br><br>
+<h2><ul> Welcome, <%= current_user.email if !current_user.nil? %></ul></h2>
 
-  <h1>Lists of Pending Tasks</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 col-sm-12 bg-white">
 
-  <table class="table">
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <div>
+        <h1 class="log-in text-center">Task List</h1>
+        <hr>
+        <% @lists.each do |list| %>
+          <ul>
+            <li class="over-flow">
+              <p class="task-list-text display-inline"><%= list.name %></p>
 
-<tbody>
-  <tr>
-    <td><strong>Project</strong></td>
-    <td><strong>Priority</strong></td>
-    <td><strong>Name<strong></td>
-    <td><strong>Summary<strong></td>
-    <td><strong>Description<strong></td>
-  </tr>
+              <div class="float-right">
 
-  if 
-  <% current_user.tasks.each do |task| %> if task.status.pending
-    <tr>
-      <td><%= task.project %></td>
-      <td><%= task.priority %></td>
-      <td><%= task.name %></td>
-      <td><%= task.summary %></td>
-      <td><%= task.description %></td>
-      <td><%= button_to 'Edit', edit_task_path(task), method: :get %></td>
-      <td><%= button_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</tbody>
-</table>
+              </div>
 
-  else
-  
-  <h1>Lists of Completed Tasks</h1>
+              <div role="group" aria-label="...">
+                <%= button_to "View Tasks", list_path(list), method: 'get', class: "button-small btn light-blue"%>
+                <%= button_to "Edit", edit_list_path(list), method: 'get', class: "button-small btn light-green"%>
+                <%= button_to "Delete", list_path(list), method: 'delete', class: "button-small btn"%>
+              </div>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-  
-  <table class="table">
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-<tbody>
-  <tr>
-    <td><strong>Project</strong></td>
-    <td><strong>Priority</strong></td>
-    <td><strong>Name<strong></td>
-    <td><strong>Summary<strong></td>
-    <td><strong>Description<strong></td>
-  </tr>
-
-  <% current_user.tasks.each do |task| %>
-    <tr>
-      <td><%= task.project %></td>
-      <td><%= task.priority %></td>
-      <td><%= task.name %></td>
-      <td><%= task.summary %></td>
-      <td><%= task.description %></td>
-      <td><%= button_to 'Edit', edit_task_path(task), method: :get %></td>
-      <td><%= button_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</tbody>
-</table>
+    

@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :tasks do
-    resources :lists, only: [:index]
+  resources :lists do
+    resources :tasks
   end
   
   root to: 'sessions#new'

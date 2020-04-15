@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 col-sm-12 bg-white">
+
+      <div>
+        <h1 class="log-in text-center"><%= @list.name %></h1>
+        <hr>
+        <p class="task-list-text"><span class="border-bottom bold-text">Tasks</span><span class="task-list-tesk float-right border-bottom bold-text">Completed?</span></p>
+
+        <% @list.tasks.each do |task| %>
+          <ul>
+            <li class="over-flow">
+
+              <p class="task-list-text display-inline"><%= task.name %></p>
+
+
+              <div style="float:right;">
+                <p class="task-list-text display-inline"><%= check_box_tag 'completed?', 1, task.status, disabled: true, id: "task_complete" %></p>
+              </div>
+
+              <div role="group" aria-label="...">
+                <%= button_to "Edit", edit_list_task_path(@list,task), method: 'get', class: "button-small btn light-green"%>
+                <%= button_to "Delete", list_task_path(@list,task), method: 'delete', class: "button-small btn"%>
+              </div>
+
+            </li>
+          </ul>
+        <% end %>
+        <%= link_to "New Task", new_list_task_path(@list), method: 'get', class: "text-center form-control btn-main margin-top-25"%>
+      </div>
+    </div>
+  </div>
+</div>

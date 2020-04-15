@@ -1,41 +1,9 @@
 <h1>Welcome to MaintenanceCo, <%=current_user.username %>!</h1><br><br>
-
-<h4> <%= link_to("Status List", task_lists_path(:task_id), method: :get) %></h4><br>
-
-  <h1>Tasks</h1>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-  
-  <tbody>
-    <tr>
-      <td><strong>Project</strong></td>
-      <td><strong>Status</strong></td>
-      <td><strong>Priority</strong></td>
-      <td><strong>Name<strong></td>
-      <td><strong>Summary<strong></td>
-      <td><strong>Description<strong></td>
-    </tr>
-  
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.project %></td>
-        <td><%= task.status %></td>
-        <td><%= task.priority %></td>
-        <td><%= task.name %></td>
-        <td><%= task.summary %></td>
-        <td><%= task.description %></td>
-        <td><%= button_to 'Edit', edit_task_path(task), method: :get %></td>
-        <td><%= button_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-  <h4> <%= link_to("Create Task", new_task_path, method: :get) %></h4><br>
-
-</div>
+<h1><%=@list.name %></h1><br><br>
+<% @tasks.each do |task| %>
+<hr>
+<%= task.complete %><br>
+<%= task.name %><br>
+<%= link_to "Delete", [@list, task], method: 'delete'%><br>
+<hr>
+<% end %>

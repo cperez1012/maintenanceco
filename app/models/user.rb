@@ -1,9 +1,13 @@
 class User < ApplicationRecord
     
     has_secure_password
-    has_many :tasks
-    has_many :lists, through: :tasks
-     
+
+    has_many :lists
+    has_many :tasks, through: :lists
+   
+    # has_many :user_lists
+    # has_many :lists, through: :user_lists
+
     validates :username, length: { minimum: 2 }
     validates :email, presence: true
     validates :email, uniqueness: true
@@ -20,13 +24,5 @@ class User < ApplicationRecord
           user.password = SecureRandom.hex(10)
       end
     end
-    
-    # def self.from_omniauth(auth)
-    #   # Creates a new user only if it doesn't exist
-    #   where(email: auth.info.email).first_or_initialize do |user|
-    #     user.name = auth.info.username
-    #     user.email = auth.info.email
-    #     user.password = auth.info.password
-    #   end
-    # end  
+ 
 end
