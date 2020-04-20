@@ -4,7 +4,8 @@ class ListsController < ApplicationController
 
     def index
         if logged_in?
-            @lists = current_user.lists.all
+            # binding.pry
+            @lists = current_user.lists.ordered_by_name
         else
             redirect_to login_path
         end
@@ -23,6 +24,7 @@ class ListsController < ApplicationController
     end
     
     def create
+        # binding.pry
         @list = current_user.lists.build(list_params)
         if @list.save
             redirect_to lists_path(@list)

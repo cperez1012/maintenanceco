@@ -4,6 +4,4 @@ class Task < ApplicationRecord
 
     validates_presence_of :name
 
-    scope :pending_status, -> { where(status: false) }
-
 end

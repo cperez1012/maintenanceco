@@ -1,4 +1,16 @@
 <%= form_for ([@list, @task]) do |f| %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(list.errors.count, "Fields are blank, Please inoout data") %> prohibited this list from being saved:</h2>
+
+      <ul>
+        <% list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <br><%= f.text_field :name, placeholder: "Name", class: "form-control" %>
   <p><span class="task-list-text complete-text">Complete?   </span><%= f.check_box :status %></p>
   <br><%= f.label :project %>

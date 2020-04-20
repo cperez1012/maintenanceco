@@ -10,13 +10,19 @@
         <% @list.tasks.each do |task| %>
           <ul>
             <li class="over-flow">
-
+              <h6>Client</h6>
               <p class="task-list-text display-inline"><%= task.name %></p>
-
 
               <div style="float:right;">
                 <p class="task-list-text display-inline"><%= check_box_tag 'completed?', 1, task.status, disabled: true, id: "task_complete" %></p>
               </div>
+
+              <h6>Project</h6>
+              <p class="task-list-text display-inline"><%= task.project %></p>
+              <h6>Summary</h6>
+              <p class="task-list-text display-inline"><%= task.summary %></p>
+
+
 
               <div role="group" aria-label="...">
                 <%= button_to "Edit", edit_list_task_path(@list,task), method: 'get', class: "button-small btn light-green"%>
