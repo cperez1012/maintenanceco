@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
 
     def create
       @user = User.find_by(:email => params[:session][:email])
-      # binding.pry
+
       if @user && @user.authenticate(params[:session][:password])
-        # binding.pry
+
         session[:user_id] = @user.id
         flash[:notice] = "#{@user.username} has successfully logged in!"
         redirect_to profile_path(@user)
@@ -32,27 +32,6 @@ class SessionsController < ApplicationController
         redirect_to signup_path
       end
     end
-
-    # def google_auth
-    #   # Get access tokens from the google server
-    #   access_token = request.env["omniauth.auth"]
-    #   binding.pry
-    #   @user = User.find_or_create_from_omniauth_hash(auth)
-    #   # binding.pry
-    #   @user.update_attributes(:google_token => access_token.credentials.token)
-    #   # binding.pry
-    #   # Access_token is used to authenticate request made from the rails application to the google server
-    #   # Refresh_token to request new access_token
-    #   # Note: Refresh_token is only sent once during the first request
-      
-    #   refresh_token = access_token.credentials.refresh_token
-      
-    #   @user.update_attributes(google_refresh_token: :refresh_token) if refresh_token.present?
-      
-    #   session[:user_id] = @user.id
-      
-    #   redirect_to profile_path(@user), notice: 'Successfully connected to Google!'
-    # end
 
     def google_auth
       # binding.pry

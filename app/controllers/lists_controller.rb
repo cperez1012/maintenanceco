@@ -1,10 +1,7 @@
 class ListsController < ApplicationController
 
-    # before_action :set_list
-
     def index
         if logged_in?
-            # binding.pry
             @lists = current_user.lists.ordered_by_name
         else
             redirect_to login_path
@@ -12,7 +9,14 @@ class ListsController < ApplicationController
     end
 
     def show
+    
+       if params[:user_id].present?
+        @user = User.find(params[:user_id])
+        @list = @user.lists.find(params[:id])
+       else
         @list = current_user.lists.find(params[:id])
+       end
+       
     end
     
     def new 
@@ -24,7 +28,6 @@ class ListsController < ApplicationController
     end
     
     def create
-        # binding.pry
         @list = current_user.lists.build(list_params)
         if @list.save
             redirect_to lists_path(@list)

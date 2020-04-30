@@ -1,12 +1,11 @@
 class User < ApplicationRecord
     
     has_secure_password
-
     has_many :lists
-    has_many :tasks, through: :lists
     has_many :comments
-    # has_many :user_lists
-    # has_many :lists, through: :user_lists
+    has_many :commented_lists, through: :comments, source: :list
+    
+    has_many :tasks, through: :lists
 
     validates :username, length: { minimum: 2 }
     validates :email, presence: true

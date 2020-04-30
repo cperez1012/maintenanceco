@@ -1,4 +1,10 @@
-<center><h1>Welcome to MaintenanceCo <%=current_user.username %></h1> <br>
-<p>Get started by creating your lists in the Create List section!</p>
-<br>
-<br></center>
+<table>
+    <tr>
+        <th><%= @user.username %> Lists</th>
+    <tr>
+        <% @user.lists.each do |list| %>
+        <tr>
+            <td><%= link_to list.name, user_list_path(@user, list) %></td>
+        <tr>
+        <% end %>
+</table>

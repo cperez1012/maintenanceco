@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
-  before_action :logged_in?
+  before_action :logged_in?, except: [:show]
+
+  def index
+    @users = User.all
+  end
 
   def new
     if logged_in?
@@ -24,6 +28,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    # @list = current_user.lists.find(params[:id])
+  end
+
+  def profile
     @user = User.find_by(id: session[:id])
   end
 

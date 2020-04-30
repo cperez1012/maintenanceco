@@ -1,11 +1,10 @@
 class List < ApplicationRecord
 
     belongs_to :user
+    has_many :comments
+    has_many :commentators, through: :comments, source: 'user'
     has_many :tasks
 
-    # has_many :user_lists
-    # has_many :users, through: :user_lists
-    
     validates_presence_of :name, uniqueness: true
 
     accepts_nested_attributes_for :tasks

@@ -1,0 +1,10 @@
+<table>
+    <tr>
+        <th>Co Workers</th>
+    <tr>
+    <% @users.each do |user| %>
+    <tr>
+        <td><%= link_to user.username, user %></td>
+    </tr>
+    <% end %>
+</table>

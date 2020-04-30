@@ -1,0 +1,19 @@
+<table>
+    <tr>
+        <th>Co Workers</th>
+        <th>Lists</th>
+        <th>Tasks</th>
+    <tr>
+        <% @users.each do |user| %>
+    <tr>
+        <td><%= user.username %></td>
+        <% user.lists.each do |list| %>
+        <td><%= list.name %></td>
+        <% list.tasks.each do |task| %>
+        <td><%= task.name %></td>
+        <% end %>
+    <% end %>
+<% end %>
+<%#= button_to "View Comments", list_comments_path(:list_id), method: 'get', class: "button-small btn light-blue"%>
+<%#= button_to "New Comment", new_list_comment_path(:list_id), method: 'get', class: "button-small btn"%>
+</table>

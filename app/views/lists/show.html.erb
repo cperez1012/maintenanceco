@@ -25,14 +25,35 @@
 
 
               <div role="group" aria-label="...">
+                <% if !@user %>
                 <%= button_to "Edit", edit_list_task_path(@list,task), method: 'get', class: "button-small btn light-green"%>
                 <%= button_to "Delete", list_task_path(@list,task), method: 'delete', class: "button-small btn"%>
+                <% end %>
               </div>
 
             </li>
           </ul>
         <% end %>
         <%= link_to "New Task", new_list_task_path(@list), method: 'get', class: "text-center form-control btn-main margin-top-25"%>
+      </div>
+      <div class="comments">
+          <h1>Comments</h1>
+          <ul>
+            <% @list.comments.each do |comment| %>
+              <li>
+                <%= comment.content %> 
+              </li>
+            <% end %>
+          </ul>
+      </div>
+      <div class="new_comment">
+          <h1> New Comment </h1>
+          
+          <%= form_with model: [@list, Comment.new], local: true do |form| %>
+            <%= form.label :content %>
+            <%= form.text_field :content %>
+          <% end %>
+
       </div>
     </div>
   </div>
