@@ -23,5 +23,9 @@ class User < ApplicationRecord
           user.password = SecureRandom.hex(10)
       end
     end
+
+    def self.all_except(user)
+      where.not(id: user)
+    end
  
 end

@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :logged_in?, except: [:show]
 
   def index
-    @users = User.all
+    # @users = User.all
+    @users = User.all_except(current_user)
   end
 
   def new

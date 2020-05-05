@@ -34,20 +34,25 @@
             </li>
           </ul>
         <% end %>
+       
+        <% if !@user %>
         <%= link_to "New Task", new_list_task_path(@list), method: 'get', class: "text-center form-control btn-main margin-top-25"%>
-      </div>
+        <% end %>
+      
+        </div>
       <div class="comments">
-          <h1>Comments</h1>
+          <h3>Comments</h3>
           <ul>
             <% @list.comments.each do |comment| %>
               <li>
-                <%= comment.content %> 
+                <%= comment.content %>
+                From: <%= @user.username %>
               </li>
             <% end %>
           </ul>
       </div>
       <div class="new_comment">
-          <h1> New Comment </h1>
+          <h3> New Comment </h3>
           
           <%= form_with model: [@list, Comment.new], local: true do |form| %>
             <%= form.label :content %>
