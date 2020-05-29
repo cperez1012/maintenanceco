@@ -18,12 +18,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :lists do
+  resources:lists do
     resources :tasks
     resources :comments
   end
-
-  
   
   root to: 'sessions#new'
 

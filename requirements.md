@@ -13,3 +13,6 @@ view all lists of mark /users/2
 click on a list of mark /users/2/lists/1
 i comment on it /lists/1/comments post to
 
+Look into differences of scope and class methods
+Finish building out longest_summary feature.
+

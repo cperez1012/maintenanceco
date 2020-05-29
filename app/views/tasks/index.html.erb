@@ -1,9 +1,2 @@
-<h1>Welcome to MaintenanceCo, <%=current_user.username %>!</h1><br><br>
-<h1><%=@list.name %></h1><br><br>
-<% @tasks.each do |task| %>
-<hr>
-<%= task.complete %><br>
-<%= task.name %><br>
-<%= link_to "Delete", [@list, task], method: 'delete'%><br>
-<hr>
-<% end %>
+<h2> Here is the longest summary <%= Task.longest_summary.first.summary %></h2>
+<%# <h2> Here is the shortest summary <%= Task.shortest_summary.first.summary %></h2> %>

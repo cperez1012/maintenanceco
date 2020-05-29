@@ -46,7 +46,7 @@
             <% @list.comments.each do |comment| %>
               <li>
                 <%= comment.content %>
-                From: <%= @user.username %>
+                From: <%= comment.user.username %>
               </li>
             <% end %>
           </ul>

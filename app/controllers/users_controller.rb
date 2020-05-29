@@ -30,7 +30,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @list = current_user.lists.find(params[:id])
   end
 
   def profile
