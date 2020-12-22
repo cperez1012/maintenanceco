@@ -58,10 +58,11 @@ body {
   }
 
   li {
-    border-right: 1px solid #bbb;
+    /* border-right: 1px solid #bbb; */
+    list-style-position: inside;
     color: crimson;
   }
-
+/* 
   ul {
     text-align: right;
-  }
+  } */

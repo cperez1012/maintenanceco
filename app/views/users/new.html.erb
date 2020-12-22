@@ -1,6 +1,10 @@
 <div class="form_fields">
-    <center><h1> Register to MaintenanceCo </h1>
-    <h6> Already have an account? &nbsp  <%= link_to "Sign In", login_path%></h6><br>
+    <center>
+        <h1> Register to MaintenanceCo </h1>
+    <h6> Already have an account? &nbsp  
+        <%= link_to "Sign In", login_path%>
+    </h6>
+    <br>
 
       
         <%= form_for(@user, url: signup_path) do |f| %>
