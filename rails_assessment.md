@@ -29,3 +29,8 @@ Differences Between Scope and Class Methods
 
 ***Scope guarantees an ActiveRecord::Relation, and class methods don’t. This helps you avoid errors when your scope returns nothing.
 
+Code Challenge Practice
+hackerrank
+leetcode - most recommended
+https://exercism.io/
+

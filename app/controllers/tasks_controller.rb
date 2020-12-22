@@ -3,15 +3,7 @@ class TasksController < ApplicationController
     before_action :current_user, :logged_in?
 
     def index
-        # @list = List.find(params)
-        # @tasks = @list.tasks
-        # redirect_to list_tasks_path
-        # if logged_in?
-        #     @list = List.find(params[:list_id])
-        #     @tasks = @list.tasks.longest_summary
-        # else
-        #     redirect_to login_path
-        # end
+
     end
 
     def new
@@ -46,7 +38,6 @@ class TasksController < ApplicationController
     def destroy
         @list = List.find(params[:list_id])
         @task = @list.tasks.find_by(params[:id])
-        # binding.pry
         @task.destroy
         redirect_to list_path(@list)
     end

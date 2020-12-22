@@ -15,7 +15,7 @@
 
   <%= f.fields_for :task_attributes do |task| %>
 
-  <%= task.text_field :name, placeholder:"Client's Name", class: "form-control" %>
+  <%#= task.text_field :name, placeholder:"Client's Name", class: "form-control" %>
   <p><span class="task-list-text complete-text">Complete?   </span><%= task.check_box :status %></p>
   
   <% end %>
