@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'auth/github/callback', to: 'sessions#github_auth'
   get 'auth/google_oauth2/callback', to: 'sessions#google_auth'
+  
   get 'auth/failure', to: 'sessions#new'
 
   #signup
