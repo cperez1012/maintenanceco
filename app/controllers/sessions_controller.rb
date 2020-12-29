@@ -40,6 +40,14 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to profile_path, notice: 'Successfully connected to Google!'
     end
+
+    def github_auth
+      
+      @user = User.find_or_create_from_omniauth_hash(auth)
+
+      session[:user_id] = @user.id
+      redirect_to profile_path, notice: 'Successfully connected to Github!'
+    end
   
     private
   
