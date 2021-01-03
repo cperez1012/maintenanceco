@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
     def github_auth
       
       @user = User.find_or_create_from_omniauth_hash(auth)
-
+      # binding.pry
       session[:user_id] = @user.id
       redirect_to profile_path, notice: 'Successfully connected to Github!'
     end
