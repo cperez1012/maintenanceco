@@ -27,6 +27,7 @@ body {
     color: #606161;
     color: #047573;
     color: rgb(194, 64, 3);
+    text-align: center;
   }
 
   p {
@@ -62,7 +63,11 @@ body {
     list-style-position: inside;
     color: crimson;
   }
-/* 
+
   ul {
-    text-align: right;
-  } */
+    text-align: center;
+  }
+
+  h1.log-in.text-center {
+    text-align: center;
+  }
