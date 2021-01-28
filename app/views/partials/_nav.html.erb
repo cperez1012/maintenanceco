@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
   <a class="navbar-brand">
     <%= image_tag 'LogoMakr-8ezZYq.png', style: 'height:10%; width:10%' %>
   </a>
@@ -10,17 +10,21 @@
         <%= link_to "Profile", profile_path(current_user) %>
       </li>
       &nbsp;
+      &nbsp;
       <li>
         <%= link_to "View Lists", lists_path %>
       </li>
+      &nbsp;
       &nbsp;
       <li>
         <%= link_to "Create New List", new_list_path %>
       </li>
       &nbsp;
+      &nbsp;
       <li>
         <%= link_to "Collegues", users_path %>
       </li>
+      &nbsp;
       &nbsp;
       <li>
         <%= link_to "Logout", logout_path, method: "delete" %>
