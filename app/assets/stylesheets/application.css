@@ -16,6 +16,22 @@
 
  @import "bootstrap";
 
+
+nav {
+  font-weight: bolder;
+  text-align: left;
+}
+
+a {
+  margin-left: 0px;
+}
+
+.navbar-brand {
+  margin: 2pt;
+  padding: 2pt;
+  box-sizing: border-box;
+}
+
 body {
     background-image:url('/images/white-background.png');
   }
@@ -32,9 +48,15 @@ body {
 
   p {
     
-    color: #606161;
-    color: #047573;
+    /* color: #606161;
+    color: #047573; */
+    color: linen;
+    background-color: lightcoral;
     
+  }
+
+  .notice {
+    text-align: center;
   }
 
   body{
@@ -59,15 +81,34 @@ body {
   }
 
   li {
-    /* border-right: 1px solid #bbb; */
-    list-style-position: inside;
+    list-style-position: none;
     color: crimson;
   }
 
   ul {
     text-align: center;
+    list-style-type: none;
+    padding-inline-start: 0px;
   }
 
-  h1.log-in.text-center {
+  h1 {
+    text-align: center;
+    color:tomato;
+    font-weight: bolder;
+  }
+
+  .display-4 {
+    font-weight: bolder;
+  }
+
+  h2 {
+    font-weight: bolder;
+  }
+
+  main {
+    background-color: lightgrey;
+  }
+
+  .col-md-4 {
     text-align: center;
   }
