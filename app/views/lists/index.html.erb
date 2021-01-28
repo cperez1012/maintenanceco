@@ -1,29 +1,24 @@
 <h2><ul> Welcome, <%= current_user.username if !current_user.nil? %></ul></h2>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4 col-sm-12 bg-white">
-      <div>
-        <h1 class="log-in text-center">Task List</h1>
-        <% @lists.each do |list| %>
-          <ul>
-            <li class="over-flow">
-              <p class="task-list-text display-inline"><%= list.name %></p>
-              <h6>List
-              <p class="task-list-text display-inline"><%= list.id %></p>
+<center>
+  <div class="container">
+    <div>
+      <h1 class="log-in text-center">Task List</h1>
+      <% @lists.each do |list| %>
+        <ul class="over-flow">
+          <p class="task-list-text display-inline"><%= list.name %></p>
+          <h6>List
+          <p class="task-list-text display-inline"><%= list.id %></p>
 
-              <div role="group" aria-label="...">
-                <%= button_to "View Tasks", list_path(list), method: 'get', class: "button-small btn light-blue"%>
-                <%= button_to "Edit", edit_list_path(list), method: 'get', class: "button-small btn light-green"%>
-                <%= button_to "Delete", list_path(list), method: 'delete', class: "button-small btn"%>
-
-              </div>
-            </li>
-          </ul>
-        <% end %>
-      </div>
+            <div role="group" aria-label="...">
+              <%= button_to "View Tasks", list_path(list), method: 'get', class: "button-small btn light-blue"%>
+              <%= button_to "Edit", edit_list_path(list), method: 'get', class: "button-small btn light-green"%>
+              <%= button_to "Delete", list_path(list), method: 'delete', class: "button-small btn"%>
+            </div>
+        </ul>
+      <% end %>
     </div>
   </div>
-</div>
+</center>
 
     
