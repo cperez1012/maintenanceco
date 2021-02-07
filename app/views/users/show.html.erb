@@ -1,10 +1,12 @@
-<table>
-    <tr>
-        <th><%= @user.username %> Lists</th>
-    <tr>
-        <% @user.lists.each do |list| %>
+<div class="col-sm-12 bg-white">
+    <table>
         <tr>
-            <td><%= link_to list.name, user_list_path(@user, list) %></td>
+            <th><%= @user.username %> Lists</th>
         <tr>
-        <% end %>
-</table>
+            <% @user.lists.each do |list| %>
+            <tr>
+                <td><%= link_to list.name, user_list_path(@user, list) %></td>
+            <tr>
+            <% end %>
+    </table>
+</div>
