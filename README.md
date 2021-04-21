@@ -1,6 +1,7 @@
 # README for MaintenanceCo
 
-<img src="./app/assets/images/MaintenanceCo.gif>
+<!-- <img src="./app/assets/images/MaintenanceCo.gif> -->
+ ![ Alt text](MaintenanceCo.gif) / ! [](name-of-gif-file. gif)
 
 MaintenanceCo is a task tracking application, where the user can create lists of Maintenance jobs such as Plumbing, Handyman, Carpentry etc. Within each created list, the user can create tasks and fill out all neccessary information such as the client's name, priority status, summary, task description, and can check when the task is completed. The user can also view their Comments page and see all the comments regarding the work amongst their fellow maintenance workers and provide either feedback or words of encouragement such as "Nice Job!".
 
