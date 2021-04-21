@@ -19,6 +19,7 @@
 
 nav {
   font-weight: bolder;
+  background-color: grey;
 }
 
 a.navbar-brand {
@@ -34,31 +35,19 @@ body {
   }
   .field_with_errors input {
     border: 1px solid red;
-  }
+}
  
   a {
-    color: #606161;
-    color: #047573;
-    color: red;
     text-align: center;
+    color: white;
   }
 
   p {
-    color: linen;
-    background-color:red;
+    color: white;
   }
 
   .notice {
     text-align: center;
-  }
-
-  body{
-    color: #606161;
-    color:red;
-  }
-
-  h6{
-    color:red;
   }
 
   .field_with_errors {
@@ -66,7 +55,7 @@ body {
   }
   
   .checkboxes {
-    text-align:left;
+    text-align:right;
   }
   
   .checkboxes label {
@@ -75,7 +64,7 @@ body {
 
   li {
     list-style-position: none;
-    color:red;
+    color: white;
   }
 
   ul {
@@ -87,21 +76,90 @@ body {
   h1 {
     text-align: center;
     font-weight: bolder;
+    color: white;
   }
 
   .display-4 {
     font-weight: bolder;
-    color:red;
   }
 
   h2 {
     font-weight: bolder;
+    color: white;
+
   }
 
   main {
-    background-color: lightgrey;
+    background-image: linear-gradient(grey, black);
   }
 
   .col-md-4 {
     text-align: center;
   }
+
+  label {
+    color: white;
+  }
+
+  h6 {
+    color: white;
+  }
+
+.jumbotron-fluid {
+  background-image: linear-gradient(black, grey);
+}
+
+/* .notice {
+  background-color: grey;
+}
+
+.alert {
+  background-color: grey;
+} */
+
+.container {
+  box-shadow: 2px;
+}
+
+.logo:hover {
+  transform: scale(1.25);
+}
+
+.navbar-brand {
+  max-block-size: 50px;
+}
+
+.task-container {
+  border-style: ridge;
+  border-color: white;
+}
+
+.list-index-container {
+  border-style: ridge;
+  border-color: white;
+}
+
+h3 {
+  color: white;
+}
+
+form {
+  color: white;
+}
+
+tr {
+  color: white;
+}
+
+/* input {
+  color: white;
+} */
+
+.form-control {
+  border-color: white;
+  width: 200px;
+}
+
+textarea {
+  width: 400px
+}

@@ -1,7 +1,7 @@
 <%= form_for ([@list, @task]) do |f| %>
   <% if @list.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(list.errors.count, "Fields are blank, Please inoout data") %> prohibited this list from being saved:</h2>
+      <h2><%= pluralize(list.errors.count, "Fields are blank, Please input data") %> prohibited this list from being saved:</h2>
 
       <ul>
         <% list.errors.full_messages.each do |message| %>
@@ -11,10 +11,12 @@
     </div>
   <% end %>
 
+  <br><%= f.label :name %>
   <br><%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+  <br>
   <p><span class="task-list-text complete-text">Complete?   </span><%= f.check_box :status %></p>
   <br><%= f.label :project %>
-  <%= f.number_field :project %>
+  <%= f.number_field :project, {min:1, max:1000}%><br>
 
   <br><%= f.label :priority%><br>
   <%= f.select :priority, ['Low','Medium','High']%><br>
@@ -24,5 +26,6 @@
   
   <br><%= f.label :description%><br>
   <%= f.text_area :description%><br>
-  <%= f.submit class: "form-control btn-main sign-up" %>
+  <br>
+  <%= f.submit class: "btn btn-outline-success" %>
 <% end %>

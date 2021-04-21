@@ -2,18 +2,18 @@
 
 <center>
   <div class="container">
-    <div class="col-sm-12 bg-white">
+    <div class="col-sm-12">
       <h1 class="log-in text-center">Task List</h1>
       <% @lists.each do |list| %>
-        <ul class="over-flow">
+        <ul class="list-index-container">
           <p class="task-list-text display-inline"><%= list.name %></p>
           <h6>List
           <p class="task-list-text display-inline"><%= list.id %></p>
 
             <div role="group" aria-label="...">
-              <%= button_to "View Tasks", list_path(list), method: 'get', class: "button-small btn light-blue"%>
-              <%= button_to "Edit", edit_list_path(list), method: 'get', class: "button-small btn light-green"%>
-              <%= button_to "Delete", list_path(list), method: 'delete', class: "button-small btn"%>
+              <%= button_to "View Tasks", list_path(list), method: 'get', class: "btn btn-outline-success"%><br>
+              <%= button_to "Edit", edit_list_path(list), method: 'get', class: "btn btn-outline-warning"%><br>
+              <%= button_to "Delete", list_path(list), method: 'delete', class: "btn btn-outline-danger"%><br>
             </div>
         </ul>
       <% end %>

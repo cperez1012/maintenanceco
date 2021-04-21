@@ -1,61 +1,64 @@
-<center>
 <div class="container">
-    <div>
+<div>
 
-      <div class="col-sm-12 bg-white">
-        <h1 class="log-in text-center"><%= @list.name %></h1>
+<div class="col-sm-12">
+<h1 class="log-in text-center"><%= @list.name %></h1>
         <hr>
         <p><span>Tasks</span></p>
-
+        
         <% @list.tasks.each do |task| %>
+          <div class="task-container">
           <ul>
-              <h6>Client</h6>
+          <h6 style="float::left;">Client</h6>
               <p class="task-list-text display-inline"><%= task.name %></p>
+              
+              <h6 style="float::left">Project</h6>
+              <p><%= task.project %></p>
+              <h6 style="float::right">Summary</h6>
+              <p><%= task.summary %></p>
 
-              <h6>Project</h6>
-              <p class="task-list-text display-inline"><%= task.project %></p>
-              <h6>Summary</h6>
-              <p class="task-list-text display-inline"><%= task.summary %></p>
-
-              <div style="float:right;">
-                <p>Completed ?</p>
-                <p class="task-list-text display-inline"><%= check_box_tag 'completed?', 1, task.status, disabled: true, id: "task_complete" %></p>
+              <div style="float::right">
+              <p>Completed ?</p>
+              <p class="float::right"><%= check_box_tag 'completed?', 1, task.status, disabled: true, id: "task_complete" %></p>
               </div>
 
               <div role="group" aria-label="...">
                 <% if !@user %>
-                <%= button_to "Edit", edit_list_task_path(@list,task), method: 'get', class: "button-small btn light-green"%>
-                <%= button_to "Delete", list_task_path(@list,task), method: 'delete', class: "button-small btn"%>
+                <%= button_to "Edit", edit_list_task_path(@list,task), method: 'get', class: "btn btn-outline-warning"%>
+                <br>
+                <%= button_to "Delete", list_task_path(@list,task), method: 'delete', class: "btn btn-outline-danger"%>
                 <% end %>
-              </div>
+                </div>
           </ul>
-        <% end %>
+          </div>
+          <% end %>
        
-        <% if !@user %>
-        <%= link_to "New Task", new_list_task_path(@list), method: 'get', class: "text-center form-control btn-main margin-top-25"%>
-        <% end %>
-      
-        </div>
-      <div class="comments">
+          <% if !@user %>
+          <br>
+          <%= link_to "New Task", new_list_task_path(@list), method: 'get', class: "btn btn-outline-success"%>
+          <% end %>
+          
+          </div>
+          <br>
+          <div class="comments">
           <h3>All Comments</h3>
           <ul>
-            <% @list.comments.each do |comment| %>
-              <li>
-                <%= comment.content %>
-                From: <%= comment.user.username %>
-              </li>
+          <% @list.comments.each do |comment| %>
+            <li>
+            <%= comment.content %>
+            From: <%= comment.user.username %>
+            </li>
             <% end %>
-          </ul>
-      </div>
-      <div class="new_comment">
-          <h3> Add Comment </h3>
-          
-          <%= form_with model: [@list, Comment.new], local: true do |form| %>
-            <%= form.label :comment %>
+            </ul>
+            </div>
+            <div class="new_comment">
+            <h3> Add Comment </h3>
+            
+            <%= form_with model: [@list, Comment.new], local: true do |form| %>
+              <%= form.label :comment %>
             <%= form.text_field :content %>
           <% end %>
 
       </div>
     </div>
 </div>
-</center>

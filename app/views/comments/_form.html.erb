@@ -1,4 +1,5 @@
 <%= form_for @comment do |f| %>
     <% f.text.field :comment, placeholder: "Comment", class: "form-control" %>
+    <br>
     <p><%= link_to 'Delete', list_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
