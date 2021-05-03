@@ -105,9 +105,9 @@ body {
     color: white;
   }
 
-.jumbotron-fluid {
-  background-image: linear-gradient(black, grey);
-}
+  .jumbotron-fluid {
+    background-image: linear-gradient(grey, black);
+  }
 
 /* .notice {
   background-color: grey;
